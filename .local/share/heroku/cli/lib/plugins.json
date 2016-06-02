@@ -1,0 +1,5244 @@
+[
+  {
+    "name": "heroku-local",
+    "version": "5.1.2",
+    "topics": null,
+    "topic": {
+      "name": "local",
+      "description": "run heroku app locally",
+      "hidden": false,
+      "Commands": null
+    },
+    "commands": [
+      {
+        "topic": "local",
+        "command": "start",
+        "plugin": "heroku-local",
+        "usage": "",
+        "description": "run heroku app locally",
+        "default": true,
+        "help": "Start the application specified by a Procfile (defaults to ./Procfile)\n\nExamples:\n\n  heroku local\n  heroku local web\n  heroku local -f Procfile.test -e .env.test",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": false,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "processname",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "procfile",
+            "char": "f",
+            "description": "use a different Procfile",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "env",
+            "char": "e",
+            "description": "location of env file (defaults to .env)",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "port",
+            "char": "p",
+            "description": "port to listen on",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "restart",
+            "char": "r",
+            "description": "restart process if it dies",
+            "hasValue": false,
+            "hidden": true,
+            "required": false
+          },
+          {
+            "name": "concurrency",
+            "char": "c",
+            "description": "number of processes to start",
+            "hasValue": true,
+            "hidden": true,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "local",
+        "command": "run",
+        "plugin": "heroku-local",
+        "usage": "",
+        "description": "run a one-off command",
+        "default": false,
+        "help": "Example:\n\n  heroku local:run bin/migrate",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": false,
+        "variableArgs": true,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "env",
+            "char": "e",
+            "description": "",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "port",
+            "char": "p",
+            "description": "",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "local",
+        "command": "version",
+        "plugin": "heroku-local",
+        "usage": "",
+        "description": "display node-foreman version",
+        "default": false,
+        "help": "Display node-foreman version",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": false,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      }
+    ],
+    "updated_at": "2016-05-26T15:43:46.481926776Z"
+  },
+  {
+    "name": "heroku-run",
+    "version": "3.2.12",
+    "topics": [
+      {
+        "name": "run",
+        "description": "run a one-off process inside a Heroku dyno",
+        "hidden": false,
+        "Commands": null
+      },
+      {
+        "name": "logs",
+        "description": "display recent log output",
+        "hidden": false,
+        "Commands": null
+      }
+    ],
+    "topic": null,
+    "commands": [
+      {
+        "topic": "run",
+        "plugin": "heroku-run",
+        "usage": "",
+        "description": "run a one-off process inside a heroku dyno",
+        "default": false,
+        "help": "Examples:\n\n  $ heroku run bash\n  Running bash on app.... up, run.1\n  ~ $\n\n  $ heroku run -s hobby -- myscript.sh -a arg1 -s arg2\n  Running myscript.sh -a arg1 -s arg2 on app.... up, run.1",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": true,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "size",
+            "char": "s",
+            "description": "dyno size",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "exit-code",
+            "char": "x",
+            "description": "passthrough the exit code of the remote command",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "env",
+            "char": "e",
+            "description": "environment variables to set (use ';' to split multiple vars)",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "no-tty",
+            "char": "",
+            "description": "force the command to not run in a tty",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "run",
+        "command": "inside",
+        "plugin": "heroku-run",
+        "usage": "",
+        "description": "run a one-off process inside an existing heroku dyno",
+        "default": false,
+        "help": "Examples:\n\n  $ heroku run:inside web.1 bash\n  Running bash on web.1.... up\n  ~ $",
+        "fullHelp": "",
+        "hidden": true,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": true,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "exit-code",
+            "char": "",
+            "description": "passthrough the exit code of the remote command",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "env",
+            "char": "",
+            "description": "environment variables to set (use ';' to split multiple vars)",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "run",
+        "command": "detached",
+        "plugin": "heroku-run",
+        "usage": "",
+        "description": "run a detached dyno, where output is sent to your logs",
+        "default": false,
+        "help": "Example:\n\n  $ heroku run:detached ls\n  Running ls on app [detached]... up, run.1\n  Run heroku logs -a app -p run.1 to view the output.",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": true,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "size",
+            "char": "s",
+            "description": "dyno size",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "tail",
+            "char": "t",
+            "description": "stream logs from the dyno",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "env",
+            "char": "e",
+            "description": "environment variables to set (use ';' to split multiple vars)",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "logs",
+        "plugin": "heroku-run",
+        "usage": "",
+        "description": "display recent log output",
+        "default": false,
+        "help": "Example:\n\n  $ heroku logs\n  2012-01-01T12:00:00+00:00 heroku[api]: Config add EXAMPLE by email@example.com\n  2012-01-01T12:00:01+00:00 heroku[api]: Release v1 created by email@example.com",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "num",
+            "char": "n",
+            "description": "number of lines to display",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "ps",
+            "char": "p",
+            "description": "hidden alias for dyno",
+            "hasValue": true,
+            "hidden": true,
+            "required": false
+          },
+          {
+            "name": "dyno",
+            "char": "d",
+            "description": "dyno to limit filter by",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "source",
+            "char": "s",
+            "description": "log source to limit filter by",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "tail",
+            "char": "t",
+            "description": "continually stream logs",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "force-colors",
+            "char": "",
+            "description": "force use of colors (even on non-tty output)",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      }
+    ],
+    "updated_at": "2016-05-26T15:43:47.292369291Z"
+  },
+  {
+    "name": "heroku-spaces",
+    "version": "2.1.5",
+    "topics": [
+      {
+        "name": "spaces",
+        "description": "manage heroku private spaces",
+        "hidden": false,
+        "Commands": null
+      },
+      {
+        "name": "trusted-ips",
+        "description": "",
+        "hidden": true,
+        "Commands": null
+      }
+    ],
+    "topic": null,
+    "commands": [
+      {
+        "topic": "spaces",
+        "plugin": "heroku-spaces",
+        "usage": "",
+        "description": "list available spaces",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": true,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "spaces",
+        "command": "create",
+        "plugin": "heroku-spaces",
+        "usage": "",
+        "description": "create a new space",
+        "default": false,
+        "help": "Example:\n  $ heroku spaces:create --space my-space --org my-org --region oregon\n  Creating space my-space in organization my-org... done\n  === my-space\n  ID:           e7b99e37-69b3-4475-ad47-a5cc5d75fd9f\n  Organization: my-org\n  Region:       oregon\n  State:        allocating\n  Created at:   2016-01-06T03:23:13Z",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": true,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "space",
+            "optional": true,
+            "hidden": true
+          }
+        ],
+        "flags": [
+          {
+            "name": "space",
+            "char": "s",
+            "description": "name of space to create",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "channel",
+            "char": "",
+            "description": "",
+            "hasValue": true,
+            "hidden": true,
+            "required": false
+          },
+          {
+            "name": "region",
+            "char": "",
+            "description": "region name",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "log-drain-url",
+            "char": "",
+            "description": "direct log drain url",
+            "hasValue": true,
+            "hidden": true,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "spaces",
+        "command": "destroy",
+        "plugin": "heroku-spaces",
+        "usage": "",
+        "description": "destroy a space",
+        "default": false,
+        "help": "Example:\n  $ heroku spaces:destroy --space my-space\n  Destroying my-space... done",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "space",
+            "optional": true,
+            "hidden": true
+          }
+        ],
+        "flags": [
+          {
+            "name": "space",
+            "char": "s",
+            "description": "space to destroy",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "confirm",
+            "char": "",
+            "description": "set to space name to bypass confirm prompt",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "spaces",
+        "command": "info",
+        "plugin": "heroku-spaces",
+        "usage": "",
+        "description": "show info about a space",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "space",
+            "optional": true,
+            "hidden": true
+          }
+        ],
+        "flags": [
+          {
+            "name": "space",
+            "char": "s",
+            "description": "space to get info of",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "spaces",
+        "command": "rename",
+        "plugin": "heroku-spaces",
+        "usage": "",
+        "description": "renames a space",
+        "default": false,
+        "help": "Example:\n  $ heroku spaces:rename --from old-space-name --to new-space-name\n  Renaming space old-space-name to new-space-name... done",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "from",
+            "char": "",
+            "description": "current name of space",
+            "hasValue": true,
+            "hidden": false,
+            "required": true
+          },
+          {
+            "name": "to",
+            "char": "",
+            "description": "desired name of space",
+            "hasValue": true,
+            "hidden": false,
+            "required": true
+          }
+        ]
+      },
+      {
+        "topic": "drains",
+        "command": "get",
+        "plugin": "heroku-spaces",
+        "usage": "",
+        "description": "display the log drain for a space",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": true,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "space",
+            "char": "s",
+            "description": "space for which to get log drain",
+            "hasValue": true,
+            "hidden": false,
+            "required": true
+          },
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "drains",
+        "command": "set",
+        "plugin": "heroku-spaces",
+        "usage": "",
+        "description": "replaces the log drain for a space",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": true,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "url",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "space",
+            "char": "s",
+            "description": "space for which to set log drain",
+            "hasValue": true,
+            "hidden": false,
+            "required": true
+          }
+        ]
+      },
+      {
+        "topic": "trusted-ips",
+        "plugin": "heroku-spaces",
+        "usage": "",
+        "description": "list trusted IP ranges for a space",
+        "default": false,
+        "help": "Trusted IP ranges are only available on Private Spaces.\n\nThe space name is a required parameter. Newly created spaces will have 0.0.0.0/0 set by default\nallowing all traffic to applications in the space. More than one CIDR block can be provided at\na time to the commands listed below. For example 1.2.3.4/20 and 5.6.7.8/20 can be added with:",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "space",
+            "optional": true,
+            "hidden": true
+          }
+        ],
+        "flags": [
+          {
+            "name": "space",
+            "char": "s",
+            "description": "space to get inbound rules from",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "trusted-ips",
+        "command": "add",
+        "plugin": "heroku-spaces",
+        "usage": "",
+        "description": "Add one range to the list of trusted IP ranges",
+        "default": false,
+        "help": "Uses CIDR notation.\n\nExample:\n  $ heroku trusted-ips:add --space my-space 192.168.2.0/24\n  Added 192.168.0.1/24 to trusted IP ranges on my-space",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "source",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "space",
+            "char": "s",
+            "description": "space to add rule to",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "confirm",
+            "char": "",
+            "description": "set to space name to bypass confirm prompt",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "trusted-ips",
+        "command": "remove",
+        "plugin": "heroku-spaces",
+        "usage": "",
+        "description": "Remove a range from the list of trusted IP ranges",
+        "default": false,
+        "help": "Uses CIDR notation.\n\nExample:\n  $ heroku trusted-ips:remove --space my-space 192.168.2.0/24\n  Removed 192.168.2.0/24 from trusted IP ranges on my-space",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "source",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "space",
+            "char": "",
+            "description": "space to remove rule from",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "confirm",
+            "char": "",
+            "description": "set to space name to bypass confirm prompt",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      }
+    ],
+    "updated_at": "2016-05-26T15:43:47.969948001Z"
+  },
+  {
+    "name": "heroku-git",
+    "version": "2.5.6",
+    "topics": null,
+    "topic": {
+      "name": "git",
+      "description": "manage local git repository for app",
+      "hidden": false,
+      "Commands": null
+    },
+    "commands": [
+      {
+        "topic": "git",
+        "command": "remote",
+        "plugin": "heroku-git",
+        "usage": "",
+        "description": "adds a git remote to an app repo",
+        "default": false,
+        "help": "extra arguments will be passed to git remote add\n\nExamples:\n\n  $ heroku git:remote -a example set git remote heroku to https://git.heroku.com/example.git",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": true,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "app",
+            "char": "a",
+            "description": "the Heroku app to use",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "remote",
+            "char": "r",
+            "description": "the git remote to create",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "ssh-git",
+            "char": "",
+            "description": "use SSH git protocol",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "git",
+        "command": "clone",
+        "plugin": "heroku-git",
+        "usage": "",
+        "description": "clones a heroku app to your local machine at DIRECTORY (defaults to app name)",
+        "default": false,
+        "help": "Examples:\n\n  $ heroku git:clone -a example\n  Cloning into 'example'...\n  remote: Counting objects: 42, done.\n  ...",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "DIRECTORY",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "app",
+            "char": "a",
+            "description": "the Heroku app to use",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "remote",
+            "char": "r",
+            "description": "the git remote to create, default \"heroku\"",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "ssh-git",
+            "char": "",
+            "description": "use SSH git protocol",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      }
+    ],
+    "updated_at": "2016-05-26T15:43:46.374811504Z"
+  },
+  {
+    "name": "heroku-orgs",
+    "version": "1.1.3",
+    "topics": [
+      {
+        "name": "access",
+        "description": "CLI to manage access in Heroku Applications",
+        "hidden": false,
+        "Commands": null
+      },
+      {
+        "name": "orgs",
+        "description": "manage organizations",
+        "hidden": false,
+        "Commands": null
+      },
+      {
+        "name": "sharing",
+        "description": "",
+        "hidden": true,
+        "Commands": null
+      },
+      {
+        "name": "join",
+        "description": "",
+        "hidden": true,
+        "Commands": null
+      },
+      {
+        "name": "leave",
+        "description": "",
+        "hidden": true,
+        "Commands": null
+      },
+      {
+        "name": "lock",
+        "description": "",
+        "hidden": true,
+        "Commands": null
+      },
+      {
+        "name": "unlock",
+        "description": "",
+        "hidden": true,
+        "Commands": null
+      }
+    ],
+    "topic": null,
+    "commands": [
+      {
+        "topic": "access",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "list who has access to an application",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "sharing",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "list who has access to an application",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": true,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "access",
+        "command": "add",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "Add new users to your app",
+        "default": false,
+        "help": "heroku access:add user@email.com --app APP # Add a collaborator to your app\n\nheroku access:add user@email.com --app APP --privileges deploy,manage,operate # privileges must be comma separated",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "email",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "privileges",
+            "char": "",
+            "description": "list of privileges comma separated",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "sharing",
+        "command": "add",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "Add new users to your app",
+        "default": false,
+        "help": "heroku access:add user@email.com --app APP # Add a collaborator to your app\n\nheroku access:add user@email.com --app APP --privileges deploy,manage,operate # privileges must be comma separated",
+        "fullHelp": "",
+        "hidden": true,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "email",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "privileges",
+            "char": "",
+            "description": "list of privileges comma separated",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "access",
+        "command": "remove",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "Remove users from your app",
+        "default": false,
+        "help": "heroku access:remove user@email.com --app APP",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "email",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "sharing",
+        "command": "remove",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "Remove users from your app",
+        "default": false,
+        "help": "heroku access:remove user@email.com --app APP",
+        "fullHelp": "",
+        "hidden": true,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "email",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "access",
+        "command": "update",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "Update existing collaborators in an org app",
+        "default": false,
+        "help": "heroku access:update user@email.com --app APP --privileges deploy,manage,operate",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "email",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "privileges",
+            "char": "",
+            "description": "comma-delimited list of privileges to update (deploy,manage,operate)",
+            "hasValue": true,
+            "hidden": false,
+            "required": true
+          }
+        ]
+      },
+      {
+        "topic": "orgs",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "list the organizations that you are a member of",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "orgs",
+        "command": "default",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": true,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": false,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "orgs",
+        "command": "open",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "open the organization interface in a browser window",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": true,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "apps",
+        "command": "join",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "add yourself to an organization app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "join",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "add yourself to an organization app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "apps",
+        "command": "leave",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "remove yourself from an organization app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "leave",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "remove yourself from an organization app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "apps",
+        "command": "lock",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "prevent organization members from joining an app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "lock",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "prevent organization members from joining an app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "apps",
+        "command": "unlock",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "unlock an app so any organization member can join",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "unlock",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "unlock an app so any organization member can join",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "members",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "list members of an organization",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": true,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "role",
+            "char": "r",
+            "description": "filter by role",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "members",
+        "command": "add",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "adds a user to an organization",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": true,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "email",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "role",
+            "char": "r",
+            "description": "member role (admin, collaborator, member, owner)",
+            "hasValue": true,
+            "hidden": false,
+            "required": true
+          }
+        ]
+      },
+      {
+        "topic": "members",
+        "command": "set",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "sets a members role in an organization",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": true,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "email",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "role",
+            "char": "r",
+            "description": "member role (admin, collaborator, member, owner)",
+            "hasValue": true,
+            "hidden": false,
+            "required": true
+          }
+        ]
+      },
+      {
+        "topic": "members",
+        "command": "remove",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "removes a user from an organization",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": true,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "email",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "apps",
+        "command": "transfer",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "transfer an app to another user or organization",
+        "default": false,
+        "help": "Examples:\n\n  $ heroku apps:transfer collaborator@example.com\n  Transferring example to collaborator@example.com... done\n\n  $ heroku apps:transfer acme-widgets\n  Transferring example to acme-widgets... done",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "recipient",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "locked",
+            "char": "l",
+            "description": "lock the app upon transfer",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "sharing",
+        "command": "transfer",
+        "plugin": "heroku-orgs",
+        "usage": "",
+        "description": "transfer an app to another user or organization",
+        "default": false,
+        "help": "Examples:\n\n  $ heroku apps:transfer collaborator@example.com\n  Transferring example to collaborator@example.com... done\n\n  $ heroku apps:transfer acme-widgets\n  Transferring example to acme-widgets... done",
+        "fullHelp": "",
+        "hidden": true,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "recipient",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "locked",
+            "char": "l",
+            "description": "lock the app upon transfer",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      }
+    ],
+    "updated_at": "2016-05-26T15:43:47.802136749Z"
+  },
+  {
+    "name": "heroku-pipelines",
+    "version": "1.1.6",
+    "topics": null,
+    "topic": {
+      "name": "pipelines",
+      "description": "manage collections of apps in pipelines",
+      "hidden": false,
+      "Commands": null
+    },
+    "commands": [
+      {
+        "topic": "pipelines",
+        "command": "add",
+        "plugin": "heroku-pipelines",
+        "usage": "",
+        "description": "add this app to a pipeline",
+        "default": false,
+        "help": "The app and pipeline names must be specified.\nThe stage of the app will be guessed based on its name if not specified.\n\nExample:\n  $ heroku pipelines:add example -a example-admin -s production\n  Adding example-admin to example pipeline as production... done",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "pipeline",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "stage",
+            "char": "s",
+            "description": "stage of first app in pipeline",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "pipelines",
+        "command": "create",
+        "plugin": "heroku-pipelines",
+        "usage": "",
+        "description": "create a new pipeline",
+        "default": false,
+        "help": "An existing app must be specified as the first app in the pipeline.\nThe pipeline name will be inferred from the app name if not specified.\nThe stage of the app will be guessed based on its name if not specified.\n\nExample:\n  $ heroku pipelines:create -a example-staging\n  ? Pipeline name: example\n  ? Stage of example-staging: staging\n  Creating example pipeline... done\n  Adding example-staging to example pipeline as staging... done",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "name",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "stage",
+            "char": "s",
+            "description": "stage of first app in pipeline",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "pipelines",
+        "command": "destroy",
+        "plugin": "heroku-pipelines",
+        "usage": "",
+        "description": "destroy a pipeline",
+        "default": false,
+        "help": "Example:\n  $ heroku pipelines:destroy example\n  Destroying example pipeline... done",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "pipeline",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "pipelines",
+        "command": "diff",
+        "plugin": "heroku-pipelines",
+        "usage": "",
+        "description": "compares the latest release of this app its downstream app(s)",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "pipelines",
+        "command": "info",
+        "plugin": "heroku-pipelines",
+        "usage": "",
+        "description": "show list of apps in a pipeline",
+        "default": false,
+        "help": "Example:\n  $ heroku pipelines:info example\n  === example\n  Staging:     example-staging\n  Production:  example\n               example-admin",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "pipeline",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "pipelines",
+        "command": "list",
+        "plugin": "heroku-pipelines",
+        "usage": "",
+        "description": "list pipelines you have access to",
+        "default": true,
+        "help": "Example:\n  $ heroku pipelines:list\n  === My Pipelines\n  example\n  sushi",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "pipelines",
+        "command": "open",
+        "plugin": "heroku-pipelines",
+        "usage": "",
+        "description": "open a pipeline in dashboard",
+        "default": false,
+        "help": "Example:\n  $ heroku pipelines:open example",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "pipeline",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "pipelines",
+        "command": "promote",
+        "plugin": "heroku-pipelines",
+        "usage": "",
+        "description": "promote the latest release of this app to its downstream app(s)",
+        "default": false,
+        "help": "Example:\n  $ heroku pipelines:promote -a example-staging\n  Promoting example-staging to example (production)... done, v23\n  Promoting example-staging to example-admin (production)... done, v54\n\nExample:\n  $ heroku pipelines:promote -a example-staging --to my-production-app1,my-production-app2\n  Starting promotion to apps: my-production-app1,my-production-app2... done\n  Waiting for promotion to complete... done\n  Promotion successful\n  my-production-app1: succeeded\n  my-production-app2: succeeded",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "to",
+            "char": "t",
+            "description": "comma separated list of apps to promote to",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "pipelines",
+        "command": "remove",
+        "plugin": "heroku-pipelines",
+        "usage": "",
+        "description": "remove this app from its pipeline",
+        "default": false,
+        "help": "Example:\n  $ heroku pipelines:remove -a example-admin\n  Removing example-admin... done",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "pipelines",
+        "command": "rename",
+        "plugin": "heroku-pipelines",
+        "usage": "",
+        "description": "rename a pipeline",
+        "default": false,
+        "help": "Example:\n  $ heroku pipelines:rename example www\n  Renaming example pipeline to www... done",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "pipeline",
+            "optional": false,
+            "hidden": false
+          },
+          {
+            "name": "name",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "pipelines",
+        "command": "update",
+        "plugin": "heroku-pipelines",
+        "usage": "",
+        "description": "update this app's stage in a pipeline",
+        "default": false,
+        "help": "Example:\n  $ heroku pipelines:update -s staging -a example-admin\n  Changing example-admin to staging... done",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "stage",
+            "char": "s",
+            "description": "new stage of app",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      }
+    ],
+    "updated_at": "2016-05-26T15:43:46.81141336Z"
+  },
+  {
+    "name": "heroku-status",
+    "version": "2.1.7",
+    "topics": null,
+    "topic": {
+      "name": "status",
+      "description": "status of the Heroku platform",
+      "hidden": false,
+      "Commands": null
+    },
+    "commands": [
+      {
+        "topic": "status",
+        "plugin": "heroku-status",
+        "usage": "",
+        "description": "display current status of Heroku platform",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": false,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      }
+    ],
+    "updated_at": "2016-05-26T15:43:48.072852816Z"
+  },
+  {
+    "name": "heroku-apps",
+    "version": "2.1.4",
+    "topics": [
+      {
+        "name": "apps",
+        "description": "manage apps",
+        "hidden": false,
+        "Commands": null
+      },
+      {
+        "name": "buildpacks",
+        "description": "manage the buildpacks for an app",
+        "hidden": false,
+        "Commands": null
+      },
+      {
+        "name": "config",
+        "description": "manage app config vars",
+        "hidden": false,
+        "Commands": null
+      },
+      {
+        "name": "create",
+        "description": "",
+        "hidden": true,
+        "Commands": null
+      },
+      {
+        "name": "dashboard",
+        "description": "",
+        "hidden": true,
+        "Commands": null
+      },
+      {
+        "name": "destroy",
+        "description": "",
+        "hidden": true,
+        "Commands": null
+      },
+      {
+        "name": "domains",
+        "description": "manage the domains for an app",
+        "hidden": false,
+        "Commands": null
+      },
+      {
+        "name": "dyno",
+        "description": "",
+        "hidden": true,
+        "Commands": null
+      },
+      {
+        "name": "drains",
+        "description": "list all log drains",
+        "hidden": false,
+        "Commands": null
+      },
+      {
+        "name": "features",
+        "description": "manage optional features",
+        "hidden": false,
+        "Commands": null
+      },
+      {
+        "name": "info",
+        "description": "",
+        "hidden": true,
+        "Commands": null
+      },
+      {
+        "name": "kill",
+        "description": "",
+        "hidden": true,
+        "Commands": null
+      },
+      {
+        "name": "labs",
+        "description": "experimental features",
+        "hidden": false,
+        "Commands": null
+      },
+      {
+        "name": "maintenance",
+        "description": "manage maintenance mode for an app",
+        "hidden": false,
+        "Commands": null
+      },
+      {
+        "name": "notifications",
+        "description": "display notifications",
+        "hidden": false,
+        "Commands": null
+      },
+      {
+        "name": "open",
+        "description": "",
+        "hidden": true,
+        "Commands": null
+      },
+      {
+        "name": "ps",
+        "description": "manage dynos (dynos, workers)",
+        "hidden": false,
+        "Commands": null
+      },
+      {
+        "name": "regions",
+        "description": "list available regions",
+        "hidden": false,
+        "Commands": null
+      },
+      {
+        "name": "releases",
+        "description": "manage app releases",
+        "hidden": false,
+        "Commands": null
+      },
+      {
+        "name": "rename",
+        "description": "",
+        "hidden": true,
+        "Commands": null
+      },
+      {
+        "name": "resize",
+        "description": "",
+        "hidden": true,
+        "Commands": null
+      },
+      {
+        "name": "restart",
+        "description": "",
+        "hidden": true,
+        "Commands": null
+      },
+      {
+        "name": "scale",
+        "description": "",
+        "hidden": true,
+        "Commands": null
+      },
+      {
+        "name": "stack",
+        "description": "",
+        "hidden": true,
+        "Commands": null
+      },
+      {
+        "name": "stop",
+        "description": "",
+        "hidden": true,
+        "Commands": null
+      }
+    ],
+    "topic": null,
+    "commands": [
+      {
+        "topic": "apps",
+        "command": "list",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "list your apps",
+        "default": false,
+        "help": "Example:\n\n $ heroku apps\n === My Apps\n example\n example2\n\n === Collaborated Apps\n theirapp   other@owner.name",
+        "fullHelp": "",
+        "hidden": true,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": true,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "all",
+            "char": "A",
+            "description": "include apps in all organizations",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "space",
+            "char": "",
+            "description": "filter by space",
+            "hasValue": true,
+            "hidden": true,
+            "required": false
+          },
+          {
+            "name": "personal",
+            "char": "p",
+            "description": "list apps in personal account when a default org is set",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "apps",
+        "command": "create",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "create a new app",
+        "default": false,
+        "help": "Examples:\n\n $ heroku apps:create\n Creating app... done, stack is cedar-14\n https://floating-dragon-42.heroku.com/ | https://git.heroku.com/floating-dragon-42.git\n\n # or just\n $ heroku create\n\n # specify a buildpack\n $ heroku apps:create --buildpack https://github.com/some/buildpack.git\n\n # specify a name\n $ heroku apps:create example\n\n # create a staging app\n $ heroku apps:create example-staging --remote staging\n\n # create an app in the eu region\n $ heroku apps:create --region eu",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": true,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "app",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "app",
+            "char": "a",
+            "description": "",
+            "hasValue": true,
+            "hidden": true,
+            "required": false
+          },
+          {
+            "name": "addons",
+            "char": "",
+            "description": "comma-delimited list of addons to install",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "buildpack",
+            "char": "b",
+            "description": "buildpack url to use for this app",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "no-remote",
+            "char": "n",
+            "description": "do not create a git remote",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "remote",
+            "char": "r",
+            "description": "the git remote to create, default \"heroku\"",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "stack",
+            "char": "s",
+            "description": "the stack to create the app on",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "space",
+            "char": "",
+            "description": "the private space to create the app in",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "region",
+            "char": "",
+            "description": "specify region for the app to run in",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "ssh-git",
+            "char": "",
+            "description": "use SSH git protocol for local git remote",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "kernel",
+            "char": "",
+            "description": "",
+            "hasValue": true,
+            "hidden": true,
+            "required": false
+          },
+          {
+            "name": "locked",
+            "char": "",
+            "description": "",
+            "hasValue": false,
+            "hidden": true,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "create",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "create a new app",
+        "default": false,
+        "help": "Examples:\n\n $ heroku apps:create\n Creating app... done, stack is cedar-14\n https://floating-dragon-42.heroku.com/ | https://git.heroku.com/floating-dragon-42.git\n\n # or just\n $ heroku create\n\n # specify a buildpack\n $ heroku apps:create --buildpack https://github.com/some/buildpack.git\n\n # specify a name\n $ heroku apps:create example\n\n # create a staging app\n $ heroku apps:create example-staging --remote staging\n\n # create an app in the eu region\n $ heroku apps:create --region eu",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": true,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "app",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "app",
+            "char": "a",
+            "description": "",
+            "hasValue": true,
+            "hidden": true,
+            "required": false
+          },
+          {
+            "name": "addons",
+            "char": "",
+            "description": "comma-delimited list of addons to install",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "buildpack",
+            "char": "b",
+            "description": "buildpack url to use for this app",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "no-remote",
+            "char": "n",
+            "description": "do not create a git remote",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "remote",
+            "char": "r",
+            "description": "the git remote to create, default \"heroku\"",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "stack",
+            "char": "s",
+            "description": "the stack to create the app on",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "space",
+            "char": "",
+            "description": "the private space to create the app in",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "region",
+            "char": "",
+            "description": "specify region for the app to run in",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "ssh-git",
+            "char": "",
+            "description": "use SSH git protocol for local git remote",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "kernel",
+            "char": "",
+            "description": "",
+            "hasValue": true,
+            "hidden": true,
+            "required": false
+          },
+          {
+            "name": "locked",
+            "char": "",
+            "description": "",
+            "hasValue": false,
+            "hidden": true,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "apps",
+        "command": "destroy",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "permanently destroy an app",
+        "default": false,
+        "help": "This will also destroy all add-ons on the app.",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": true,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "app",
+            "optional": true,
+            "hidden": true
+          }
+        ],
+        "flags": [
+          {
+            "name": "confirm",
+            "char": "c",
+            "description": "",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "apps",
+        "command": "delete",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "permanently destroy an app",
+        "default": false,
+        "help": "This will also destroy all add-ons on the app.",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": true,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "app",
+            "optional": true,
+            "hidden": true
+          }
+        ],
+        "flags": [
+          {
+            "name": "confirm",
+            "char": "c",
+            "description": "",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "destroy",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "permanently destroy an app",
+        "default": false,
+        "help": "This will also destroy all add-ons on the app.",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": true,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "app",
+            "optional": true,
+            "hidden": true
+          }
+        ],
+        "flags": [
+          {
+            "name": "confirm",
+            "char": "c",
+            "description": "",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "apps",
+        "command": "errors",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "view app errors",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "hours",
+            "char": "",
+            "description": "number of hours to look back (default 24)",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "router",
+            "char": "",
+            "description": "show only router errors",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "dyno",
+            "char": "",
+            "description": "show only dyno errors",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "apps",
+        "command": "favorites",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "list favorited apps",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "apps",
+        "command": "favorites:add",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "favorites an app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "apps",
+        "command": "favorites:remove",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "unfavorites an app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "apps",
+        "command": "info",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "show detailed app information",
+        "default": false,
+        "help": "Examples:\n\n $ heroku apps:info\n === example\n Git URL:   https://git.heroku.com/example.git\n Repo Size: 5M\n ...\n\n $ heroku apps:info --shell\n git_url=https://git.heroku.com/example.git\n repo_size=5000000\n ...",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": true,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "app",
+            "optional": true,
+            "hidden": true
+          }
+        ],
+        "flags": [
+          {
+            "name": "shell",
+            "char": "s",
+            "description": "output more shell friendly key/value pairs",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "extended",
+            "char": "x",
+            "description": "",
+            "hasValue": false,
+            "hidden": true,
+            "required": false
+          },
+          {
+            "name": "json",
+            "char": "j",
+            "description": "",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "info",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "show detailed app information",
+        "default": false,
+        "help": "Examples:\n\n $ heroku apps:info\n === example\n Git URL:   https://git.heroku.com/example.git\n Repo Size: 5M\n ...\n\n $ heroku apps:info --shell\n git_url=https://git.heroku.com/example.git\n repo_size=5000000\n ...",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": true,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "app",
+            "optional": true,
+            "hidden": true
+          }
+        ],
+        "flags": [
+          {
+            "name": "shell",
+            "char": "s",
+            "description": "output more shell friendly key/value pairs",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "extended",
+            "char": "x",
+            "description": "",
+            "hasValue": false,
+            "hidden": true,
+            "required": false
+          },
+          {
+            "name": "json",
+            "char": "j",
+            "description": "",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "apps",
+        "command": "open",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "open the app in a web browser",
+        "default": false,
+        "help": "Examples:\n\n  $ heroku open -a myapp\n  # opens https://myapp.herokuapp.com\n\n  $ heroku open -a myapp /foo\n  # opens https://myapp.herokuapp.com/foo",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "path",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "open",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "open the app in a web browser",
+        "default": false,
+        "help": "Examples:\n\n  $ heroku open -a myapp\n  # opens https://myapp.herokuapp.com\n\n  $ heroku open -a myapp /foo\n  # opens https://myapp.herokuapp.com/foo",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "path",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "apps",
+        "command": "rename",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "rename an app",
+        "default": false,
+        "help": "This will locally update the git remote if it is set to the old app.\n\nExample:\n\n  $ heroku apps:rename --app oldname newname\n  https://newname.herokuapp.com/ | https://git.heroku.com/newname.git\n  Git remote heroku updated",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "newname",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "ssh-git",
+            "char": "",
+            "description": "use ssh git protocol instead of https",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "rename",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "rename an app",
+        "default": false,
+        "help": "This will locally update the git remote if it is set to the old app.\n\nExample:\n\n  $ heroku apps:rename --app oldname newname\n  https://newname.herokuapp.com/ | https://git.heroku.com/newname.git\n  Git remote heroku updated",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "newname",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "ssh-git",
+            "char": "",
+            "description": "use ssh git protocol instead of https",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "apps",
+        "command": "stacks",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "show the list of available stacks",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "stack",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "show the list of available stacks",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "apps",
+        "command": "stacks:set",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "set the stack of an app",
+        "default": false,
+        "help": "Example:\n\n  $ heroku stack:set cedar-14 -a myapp\n  Stack set. Next release on myapp will use cedar-14.\n  Run git push heroku master to create a new release on myapp.",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "stack",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "stack",
+        "command": "set",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "set the stack of an app",
+        "default": false,
+        "help": "Example:\n\n  $ heroku stack:set cedar-14 -a myapp\n  Stack set. Next release on myapp will use cedar-14.\n  Run git push heroku master to create a new release on myapp.",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "stack",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "buildpacks",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "display the buildpack_url(s) for an app",
+        "default": false,
+        "help": "Examples:\n $ heroku buildpacks",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "buildpacks",
+        "command": "add",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "add new app buildpack, inserting into list of buildpacks if necessary",
+        "default": false,
+        "help": "Example:\n\n $ heroku buildpacks:add -i 1 https://github.com/heroku/heroku-buildpack-ruby",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "url",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "index",
+            "char": "i",
+            "description": "the 1-based index of the URL in the list of URLs",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "buildpacks",
+        "command": "clear",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "clear all buildpacks set on the app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "buildpacks",
+        "command": "remove",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "remove a buildpack set on the app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "url",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "index",
+            "char": "i",
+            "description": "the 1-based index of the URL to remove from the list of URLs",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "buildpacks",
+        "command": "set",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "set new app buildpack, overwriting into list of buildpacks if necessary",
+        "default": false,
+        "help": "Example:\n\n $ heroku buildpacks:set -i 1 https://github.com/heroku/heroku-buildpack-ruby",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "url",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "index",
+            "char": "i",
+            "description": "the 1-based index of the URL in the list of URLs",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "config",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "display the config vars for an app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "shell",
+            "char": "s",
+            "description": "output config vars in shell format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "json",
+            "char": "",
+            "description": "output config vars in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "config",
+        "command": "get",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "display a config value for an app",
+        "default": false,
+        "help": "Example:\n\n $ heroku config:get RAILS_ENV\n production",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "key",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "shell",
+            "char": "s",
+            "description": "output config var in shell format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "config",
+        "command": "add",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "set one or more config vars",
+        "default": false,
+        "help": "Examples:\n\n $ heroku config:set RAILS_ENV=staging\n Setting config vars and restarting example... done, v10\n RAILS_ENV: staging\n\n $ heroku config:set RAILS_ENV=staging RACK_ENV=staging\n Setting config vars and restarting example... done, v11\n RAILS_ENV: staging\n RACK_ENV:  staging",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": true,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "config",
+        "command": "set",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "set one or more config vars",
+        "default": false,
+        "help": "Examples:\n\n $ heroku config:set RAILS_ENV=staging\n Setting config vars and restarting example... done, v10\n RAILS_ENV: staging\n\n $ heroku config:set RAILS_ENV=staging RACK_ENV=staging\n Setting config vars and restarting example... done, v11\n RAILS_ENV: staging\n RACK_ENV:  staging",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": true,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "config",
+        "command": "remove",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "unset one or more config vars",
+        "default": false,
+        "help": "Examples:\n\n $ heroku config:unset RAILS_ENV\n Unsetting RAILS_ENV and restarting example... done, v10\n\n $ heroku config:unset RAILS_ENV RACK_ENV\n Unsetting RAILS_ENV, RACK_ENV and restarting example... done, v10",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": true,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "config",
+        "command": "unset",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "unset one or more config vars",
+        "default": false,
+        "help": "Examples:\n\n $ heroku config:unset RAILS_ENV\n Unsetting RAILS_ENV and restarting example... done, v10\n\n $ heroku config:unset RAILS_ENV RACK_ENV\n Unsetting RAILS_ENV, RACK_ENV and restarting example... done, v10",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": true,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "dashboard",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "display information about favorite apps",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": true,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": true,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "domains",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "list domains for an app",
+        "default": false,
+        "help": "Example:\n\n  $ heroku domains\n  === example Heroku Domain\n  example.herokuapp.com\n\n  === example Custom Domains\n  Domain Name  DNS Target\n  ───────────  ─────────────────────\n  example.com  example.herokuapp.com",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "domains",
+        "command": "add",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "add domain to an app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "hostname",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "wait",
+            "char": "",
+            "description": "",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "domains",
+        "command": "clear",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "remove all domains from an app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "domains",
+        "command": "remove",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "remove domain from an app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "hostname",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "domains",
+        "command": "wait",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "wait for domain to be active for an app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "hostname",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "drains",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "display the log drains of an app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "extended",
+            "char": "x",
+            "description": "",
+            "hasValue": false,
+            "hidden": true,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "drains",
+        "command": "add",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "adds a log drain to an app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "url",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "drains",
+        "command": "remove",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "adds a log drain to an app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "url",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "features",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "list available app features",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "features",
+        "command": "disable",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "disables an app feature",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "feature",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "features",
+        "command": "enable",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "enables an app feature",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "feature",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "features",
+        "command": "info",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "display information about a feature",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "feature",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "keys",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "display your SSH keys",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "long",
+            "char": "l",
+            "description": "display full SSH keys",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "keys",
+        "command": "add",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "add an SSH key for a user",
+        "default": false,
+        "help": "if no KEY is specified, will try to find ~/.ssh/id_rsa.pub\n\nExamples:\n\n  $ heroku keys:add\n  Could not find an existing public key.\n  Would you like to generate one? [Yn] y\n  Generating new SSH public key.\n  Uploading SSH public key /.ssh/id_rsa.pub... done\n\n  $ heroku keys:add /my/key.pub\n  Uploading SSH public key /my/key.pub... done",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "key",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "quiet",
+            "char": "",
+            "description": "",
+            "hasValue": false,
+            "hidden": true,
+            "required": false
+          },
+          {
+            "name": "yes",
+            "char": "y",
+            "description": "automatically answer yes for all prompts",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "keys",
+        "command": "clear",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "remove all SSH keys for current user",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "keys",
+        "command": "remove",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "remove an SSH key from the user",
+        "default": false,
+        "help": "Example:\n\n  $ heroku keys:remove email@example.com\n  Removing email@example.com SSH key... done",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "key",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "labs",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "list experimental features",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": true,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "json",
+            "char": "",
+            "description": "display as json",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "labs",
+        "command": "disable",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "disables an experimental feature",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": true,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "feature",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "labs",
+        "command": "enable",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "enables an experimental feature",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": true,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "feature",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "labs",
+        "command": "info",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "show feature info",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": true,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "feature",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "json",
+            "char": "",
+            "description": "display as json",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "maintenance",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "display the current maintenance status of app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "maintenance",
+        "command": "off",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "take the app out of maintenance mode",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "maintenance",
+        "command": "on",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "put the app into maintenance mode",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "notifications",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "display notifications",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": true,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "all",
+            "char": "",
+            "description": "view all notifications (not just the ones for the current app)",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "read",
+            "char": "",
+            "description": "show notifications already read",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "ps",
+        "plugin": "heroku-apps",
+        "usage": "ps [TYPE [TYPE ...]]",
+        "description": "list dynos for an app",
+        "default": false,
+        "help": "Examples:\n\n $ heroku ps\n === run: one-off dyno\n run.1: up for 5m: bash\n\n === web: bundle exec thin start -p $PORT\n web.1: created for 30s\n\n $ heroku ps run # specifying types\n === run: one-off dyno\n run.1: up for 5m: bash",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": true,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "json",
+            "char": "",
+            "description": "display as json",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "extended",
+            "char": "x",
+            "description": "",
+            "hasValue": false,
+            "hidden": true,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "dyno",
+        "command": "restart",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "restart app dynos",
+        "default": false,
+        "help": "if DYNO is not specified, restarts all dynos on app\n\nExamples:\n\n  $ heroku ps:restart web.1\n  Restarting web.1 dyno... done\n\n  $ heroku ps:restart web\n  Restarting web dynos... done\n\n  $ heroku ps:restart\n  Restarting dynos... done",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "dyno",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "ps",
+        "command": "restart",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "restart app dynos",
+        "default": false,
+        "help": "if DYNO is not specified, restarts all dynos on app\n\nExamples:\n\n  $ heroku ps:restart web.1\n  Restarting web.1 dyno... done\n\n  $ heroku ps:restart web\n  Restarting web dynos... done\n\n  $ heroku ps:restart\n  Restarting dynos... done",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "dyno",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "restart",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "restart app dynos",
+        "default": false,
+        "help": "if DYNO is not specified, restarts all dynos on app\n\nExamples:\n\n  $ heroku ps:restart web.1\n  Restarting web.1 dyno... done\n\n  $ heroku ps:restart web\n  Restarting web dynos... done\n\n  $ heroku ps:restart\n  Restarting dynos... done",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "dyno",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "dyno",
+        "command": "scale",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "scale dyno quantity up or down",
+        "default": false,
+        "help": "Appending a size (eg. web=2:Standard-2X) allows simultaneous scaling and resizing.\n\nOmitting any arguments will display the app's current dyno formation, in a\nformat suitable for passing back into ps:scale.\n\nExamples:\n\n  $ heroku ps:scale web=3:Standard-2X worker+1\n  Scaling dynos... done, now running web at 3:Standard-2X, worker at 1:Standard-1X.\n\n  $ heroku ps:scale\n  web=3:Standard-2X worker=1:Standard-1X",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": true,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "ps",
+        "command": "scale",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "scale dyno quantity up or down",
+        "default": false,
+        "help": "Appending a size (eg. web=2:Standard-2X) allows simultaneous scaling and resizing.\n\nOmitting any arguments will display the app's current dyno formation, in a\nformat suitable for passing back into ps:scale.\n\nExamples:\n\n  $ heroku ps:scale web=3:Standard-2X worker+1\n  Scaling dynos... done, now running web at 3:Standard-2X, worker at 1:Standard-1X.\n\n  $ heroku ps:scale\n  web=3:Standard-2X worker=1:Standard-1X",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": true,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "scale",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "scale dyno quantity up or down",
+        "default": false,
+        "help": "Appending a size (eg. web=2:Standard-2X) allows simultaneous scaling and resizing.\n\nOmitting any arguments will display the app's current dyno formation, in a\nformat suitable for passing back into ps:scale.\n\nExamples:\n\n  $ heroku ps:scale web=3:Standard-2X worker+1\n  Scaling dynos... done, now running web at 3:Standard-2X, worker at 1:Standard-1X.\n\n  $ heroku ps:scale\n  web=3:Standard-2X worker=1:Standard-1X",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": true,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "dyno",
+        "command": "stop",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "stop app dyno",
+        "default": false,
+        "help": "stop app dyno or dyno type\n\nExamples:\n\n  $ heroku ps:stop run.1828\n  Stopping run.1828 dyno... done\n\n  $ heroku ps:stop run\n  Stopping run dynos... done",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "dyno",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "dyno",
+        "command": "kill",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "stop app dyno",
+        "default": false,
+        "help": "stop app dyno or dyno type\n\nExamples:\n\n  $ heroku ps:stop run.1828\n  Stopping run.1828 dyno... done\n\n  $ heroku ps:stop run\n  Stopping run dynos... done",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "dyno",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "kill",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "stop app dyno",
+        "default": false,
+        "help": "stop app dyno or dyno type\n\nExamples:\n\n  $ heroku ps:stop run.1828\n  Stopping run.1828 dyno... done\n\n  $ heroku ps:stop run\n  Stopping run dynos... done",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "dyno",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "ps",
+        "command": "stop",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "stop app dyno",
+        "default": false,
+        "help": "stop app dyno or dyno type\n\nExamples:\n\n  $ heroku ps:stop run.1828\n  Stopping run.1828 dyno... done\n\n  $ heroku ps:stop run\n  Stopping run dynos... done",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "dyno",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "ps",
+        "command": "kill",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "stop app dyno",
+        "default": false,
+        "help": "stop app dyno or dyno type\n\nExamples:\n\n  $ heroku ps:stop run.1828\n  Stopping run.1828 dyno... done\n\n  $ heroku ps:stop run\n  Stopping run dynos... done",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "dyno",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "stop",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "stop app dyno",
+        "default": false,
+        "help": "stop app dyno or dyno type\n\nExamples:\n\n  $ heroku ps:stop run.1828\n  Stopping run.1828 dyno... done\n\n  $ heroku ps:stop run\n  Stopping run dynos... done",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "dyno",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "dyno",
+        "command": "resize",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "manage dyno sizes",
+        "default": false,
+        "help": "Called with no arguments shows the current dyno size.\n\nCalled with one argument sets the size.\nWhere SIZE is one of free|hobby|standard-1x|standard-2x|performance\n\nCalled with 1..n TYPE=SIZE arguments sets the quantity per type.",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": true,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "dyno",
+        "command": "type",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "manage dyno sizes",
+        "default": false,
+        "help": "Called with no arguments shows the current dyno size.\n\nCalled with one argument sets the size.\nWhere SIZE is one of free|hobby|standard-1x|standard-2x|performance\n\nCalled with 1..n TYPE=SIZE arguments sets the quantity per type.",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": true,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "ps",
+        "command": "resize",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "manage dyno sizes",
+        "default": false,
+        "help": "Called with no arguments shows the current dyno size.\n\nCalled with one argument sets the size.\nWhere SIZE is one of free|hobby|standard-1x|standard-2x|performance\n\nCalled with 1..n TYPE=SIZE arguments sets the quantity per type.",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": true,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "resize",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "manage dyno sizes",
+        "default": false,
+        "help": "Called with no arguments shows the current dyno size.\n\nCalled with one argument sets the size.\nWhere SIZE is one of free|hobby|standard-1x|standard-2x|performance\n\nCalled with 1..n TYPE=SIZE arguments sets the quantity per type.",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": true,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "ps",
+        "command": "type",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "manage dyno sizes",
+        "default": false,
+        "help": "Called with no arguments shows the current dyno size.\n\nCalled with one argument sets the size.\nWhere SIZE is one of free|hobby|standard-1x|standard-2x|performance\n\nCalled with 1..n TYPE=SIZE arguments sets the quantity per type.",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": true,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": null
+      },
+      {
+        "topic": "regions",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "list available regions for deployment",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "releases",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "display the releases for an app",
+        "default": false,
+        "help": "Example:\n\n $ heroku releases\n === example Releases\n v1 Config add FOO_BAR email@example.com 2015/11/17 17:37:41 (~ 1h ago)\n v2 Config add BAR_BAZ email@example.com 2015/11/17 17:37:41 (~ 1h ago)\n v3 Config add BAZ_QUX email@example.com 2015/11/17 17:37:41 (~ 1h ago)",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "num",
+            "char": "n",
+            "description": "number of releases to show",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "json",
+            "char": "",
+            "description": "output releases in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "extended",
+            "char": "x",
+            "description": "",
+            "hasValue": false,
+            "hidden": true,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "releases",
+        "command": "info",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "view detailed information for a release",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "release",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "shell",
+            "char": "s",
+            "description": "output in shell format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "releases",
+        "command": "rollback",
+        "plugin": "heroku-apps",
+        "usage": "",
+        "description": "rollback to a previous release",
+        "default": false,
+        "help": "If RELEASE is not specified, it will rollback one release",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "release",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      }
+    ],
+    "updated_at": "2016-05-26T15:43:48.219743156Z"
+  },
+  {
+    "name": "heroku-cli-addons",
+    "version": "1.0.2",
+    "topics": null,
+    "topic": {
+      "name": "addons",
+      "description": "manage add-ons",
+      "hidden": false,
+      "Commands": null
+    },
+    "commands": [
+      {
+        "topic": "addons",
+        "plugin": "heroku-cli-addons",
+        "usage": "addons [--all|--app APP]",
+        "description": "lists your add-ons and attachments",
+        "default": true,
+        "help": "The default filter applied depends on whether you are in a Heroku app\ndirectory. If so, the --app flag is implied. If not, the default of --all\nis implied. Explicitly providing either flag overrides the default\nbehavior.\n\nExamples:\n\n  $ heroku addons --all\n  $ heroku addons --app acme-inc-www\n\nOverview of Add-ons:\n\n  Add-ons are created with the `addons:create` command, providing a reference\n  to an add-on service (such as `heroku-postgresql`) or a service and plan\n  (such as `heroku-postgresql:hobby-dev`).\n\n  At creation, each add-on is given a globally unique name. In addition, each\n  add-on has at least one attachment alias to each application which uses the\n  add-on. In all cases, the owning application will be attached to the add-on.\n  An attachment alias is unique to its application, and is used as a prefix to\n  any environment variables it exports to the application.\n\n  In this example, a `heroku-postgresql` add-on is created and its given name\n  is `postgresql-deep-6913` with a default attachment alias of `DATABASE`:\n\n    $ heroku addons:create heroku-postgresql --app my-app\n    Creating postgresql-deep-6913... done, (free)\n    Adding postgresql-deep-6913 to my-app... done\n    Setting DATABASE_URL and restarting my-app... done, v5\n    Database has been created and is available\n\n    $ heroku addons --app my-app\n    Add-on                                     Plan       Price\n    ─────────────────────────────────────────  ─────────  ─────\n    heroku-postgresql (postgresql-deep-6913)   hobby-dev  free\n    └─ as DATABASE\n\n  The add-on name and, in some cases, the attachment alias can be specified by\n  the user. For instance, we can add a second database to the app, specifying\n  both these identifiers:\n\n    $ heroku addons:create heroku-postgresql --app my-app --name main-db --as PRIMARY_DB\n    Creating main-db... done, (free)\n    Adding main-db to my-app... done\n    Setting PRIMARY_DB_URL and restarting my-app... done, v6\n    Database has been created and is available\n\n    $ heroku addons --app my-app\n    Add-on                                     Plan       Price\n    ─────────────────────────────────────────  ─────────  ─────\n    heroku-postgresql (main-db)                hobby-dev  free\n    └─ as PRIMARY_DB\n\n    heroku-postgresql (postgresql-deep-6913)   hobby-dev  free\n    └─ as DATABASE\n\n  Attachment aliases can also be specified when making attachments:\n\n    $ heroku addons:attach main-db --app my-app --as ANOTHER_NAME\n    Attaching main-db as ANOTHER_NAME to my-app... done\n    Setting ANOTHER_NAME vars and restarting my-app... done, v7\n\n    $ heroku addons --app my-app\n    Add-on                                     Plan       Price\n    ─────────────────────────────────────────  ─────────  ─────\n    heroku-postgresql (main-db)                hobby-dev  free\n    ├─ as PRIMARY_DB\n    └─ as ANOTHER_NAME\n\n    heroku-postgresql (postgresql-deep-6913)   hobby-dev  free\n    └─ as DATABASE\n\n  For more information, read https://devcenter.heroku.com/articles/add-ons.",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": true,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "all",
+            "char": "A",
+            "description": "show add-ons and attachments for all accessible apps",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "json",
+            "char": "",
+            "description": "return add-ons in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "addons",
+        "command": "attach",
+        "plugin": "heroku-cli-addons",
+        "usage": "",
+        "description": "attach add-on resource to a new app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "addon_name",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "as",
+            "char": "",
+            "description": "name for add-on attachment",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "confirm",
+            "char": "",
+            "description": "overwrite existing add-on attachment with same name",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "addons",
+        "command": "detach",
+        "plugin": "heroku-cli-addons",
+        "usage": "",
+        "description": "detach an add-on resource from an app",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "attachment_name",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "addons",
+        "command": "docs",
+        "plugin": "heroku-cli-addons",
+        "usage": "",
+        "description": "open an add-on's Dev Center documentation in your browser",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": true,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "addon",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "show-url",
+            "char": "",
+            "description": "show URL, do not open browser",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "addons",
+        "command": "info",
+        "plugin": "heroku-cli-addons",
+        "usage": "addons:info ADDON",
+        "description": "Show info about an add-on and its attachments.",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": true,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "addon",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "addons",
+        "command": "open",
+        "plugin": "heroku-cli-addons",
+        "usage": "",
+        "description": "open an add-on's dashboard in your browser",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": true,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "addon",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "show-url",
+            "char": "",
+            "description": "show URL, do not open browser",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "addons",
+        "command": "plans",
+        "plugin": "heroku-cli-addons",
+        "usage": "",
+        "description": "list all available plans for an add-on services",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": false,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "service",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "addons",
+        "command": "rename",
+        "plugin": "heroku-cli-addons",
+        "usage": "addons:rename ADDON NEW_NAME",
+        "description": "Rename an add-on.",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": true,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "addon",
+            "optional": false,
+            "hidden": false
+          },
+          {
+            "name": "name",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "addons",
+        "command": "services",
+        "plugin": "heroku-cli-addons",
+        "usage": "",
+        "description": "list all available add-on services",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": false,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": null,
+        "flags": [
+          {
+            "name": "json",
+            "char": "",
+            "description": "output in json format",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "addons",
+        "command": "upgrade",
+        "plugin": "heroku-cli-addons",
+        "usage": "",
+        "description": "change add-on plan",
+        "default": false,
+        "help": "See available plans with `heroku addons:plans SERVICE`.\n\nNote that `heroku addons:upgrade` and `heroku addons:downgrade` are the same.\nEither one can be used to change an add-on plan up or down.\n\nhttps://devcenter.heroku.com/articles/managing-add-ons\n\nExamples:\n\n  Upgrade an add-on by service name:\n\n  $ heroku addons:upgrade heroku-redis:premium-2\n\n  Upgrade a specific add-on:\n\n  $ heroku addons:upgrade swimming-briskly-123 heroku-redis:premium-2",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": true,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "addon",
+            "optional": false,
+            "hidden": false
+          },
+          {
+            "name": "plan",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "addons",
+        "command": "downgrade",
+        "plugin": "heroku-cli-addons",
+        "usage": "",
+        "description": "change add-on plan",
+        "default": false,
+        "help": "See available plans with `heroku addons:plans SERVICE`.\n\nNote that `heroku addons:upgrade` and `heroku addons:downgrade` are the same.\nEither one can be used to change an add-on plan up or down.\n\nhttps://devcenter.heroku.com/articles/managing-add-ons\n\nExamples:\n\n  Upgrade an add-on by service name:\n\n  $ heroku addons:upgrade heroku-redis:premium-2\n\n  Upgrade a specific add-on:\n\n  $ heroku addons:upgrade swimming-briskly-123 heroku-redis:premium-2",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": true,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "addon",
+            "optional": false,
+            "hidden": false
+          },
+          {
+            "name": "plan",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      }
+    ],
+    "updated_at": "2016-05-26T15:43:47.572714789Z"
+  },
+  {
+    "name": "heroku-fork",
+    "version": "4.1.7",
+    "topics": null,
+    "topic": {
+      "name": "fork",
+      "description": "clone an existing app",
+      "hidden": false,
+      "Commands": null
+    },
+    "commands": [
+      {
+        "topic": "fork",
+        "plugin": "heroku-fork",
+        "usage": "",
+        "description": "Fork an existing app into a new one",
+        "default": false,
+        "help": "Copy config vars and Heroku Postgres data, and re-provision add-ons to a new app.\nNew app name should not be an existing app. The new app will be created as part of the forking process.\n\nExample:\n\n  $ heroku fork --from my-production-app --to my-development-app",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": false,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "NEWNAME",
+            "optional": true,
+            "hidden": true
+          }
+        ],
+        "flags": [
+          {
+            "name": "region",
+            "char": "",
+            "description": "specify a region",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "skip-pg",
+            "char": "",
+            "description": "skip postgres databases",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "from",
+            "char": "",
+            "description": "app to fork from",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "to",
+            "char": "",
+            "description": "app to create",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "app",
+            "char": "a",
+            "description": "",
+            "hasValue": true,
+            "hidden": true,
+            "required": false
+          }
+        ]
+      }
+    ],
+    "updated_at": "2016-05-26T15:43:47.460716505Z"
+  },
+  {
+    "name": "heroku-redis",
+    "version": "1.2.5",
+    "topics": null,
+    "topic": {
+      "name": "redis",
+      "description": "manage heroku redis instances",
+      "hidden": false,
+      "Commands": null
+    },
+    "commands": [
+      {
+        "topic": "redis",
+        "command": "cli",
+        "plugin": "heroku-redis",
+        "usage": "",
+        "description": "opens a redis prompt",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "database",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "confirm",
+            "char": "c",
+            "description": "",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "redis",
+        "command": "info",
+        "plugin": "heroku-redis",
+        "usage": "",
+        "description": "gets information about redis",
+        "default": true,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "database",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "redis",
+        "command": "wait",
+        "plugin": "heroku-redis",
+        "usage": "",
+        "description": "wait for Redis instance to be available",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "database",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "redis",
+        "command": "credentials",
+        "plugin": "heroku-redis",
+        "usage": "",
+        "description": "display credentials information",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "database",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "reset",
+            "char": "",
+            "description": "reset credentials",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "redis",
+        "command": "promote",
+        "plugin": "heroku-redis",
+        "usage": "",
+        "description": "sets DATABASE as your REDIS_URL",
+        "default": false,
+        "help": "",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "database",
+            "optional": false,
+            "hidden": false
+          }
+        ],
+        "flags": null
+      },
+      {
+        "topic": "redis",
+        "command": "timeout",
+        "plugin": "heroku-redis",
+        "usage": "",
+        "description": "set the number of seconds to wait before killing idle connections",
+        "default": false,
+        "help": "Sets the number of seconds to wait before killing idle connections. A value of zero means that connections will not be closed.",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "database",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "seconds",
+            "char": "s",
+            "description": "set timeout value",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "redis",
+        "command": "maxmemory",
+        "plugin": "heroku-redis",
+        "usage": "",
+        "description": "set the key eviction policy",
+        "default": false,
+        "help": "Set the key eviction policy when instance reaches its storage limit. Available policies for key eviction include:\n\n    noeviction      # returns errors when memory limit is reached\n    allkeys-lru     # removes less recently used keys first\n    volatile-lru    # removes less recently used keys first that have an expiry set\n    allkeys-random  # evicts random keys\n    volatile-random # evicts random keys but only those that have an expiry set\n    volatile-ttl    # only evicts keys with an expiry set and a short TTL",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "database",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "policy",
+            "char": "p",
+            "description": "set policy name",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      },
+      {
+        "topic": "redis",
+        "command": "maintenance",
+        "plugin": "heroku-redis",
+        "usage": "",
+        "description": "manage maintenance windows",
+        "default": false,
+        "help": "Set or change the maintenance window for your Redis instance",
+        "fullHelp": "",
+        "hidden": false,
+        "needsApp": true,
+        "wantsApp": false,
+        "needsOrg": false,
+        "wantsOrg": false,
+        "needsAuth": true,
+        "variableArgs": false,
+        "disableAnalytics": false,
+        "args": [
+          {
+            "name": "database",
+            "optional": true,
+            "hidden": false
+          }
+        ],
+        "flags": [
+          {
+            "name": "window",
+            "char": "w",
+            "description": "set weekly UTC maintenance window",
+            "hasValue": true,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "run",
+            "char": "",
+            "description": "start maintenance",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          },
+          {
+            "name": "force",
+            "char": "f",
+            "description": "start maintenance without entering application maintenance mode",
+            "hasValue": false,
+            "hidden": false,
+            "required": false
+          }
+        ]
+      }
+    ],
+    "updated_at": "2016-05-26T15:43:47.166083699Z"
+  }
+]

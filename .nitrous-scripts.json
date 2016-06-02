@@ -1,0 +1,5 @@
+{
+  "Start server": "sudo service nginx start",
+  "Stop server": "sudo service nginx stop",
+  "Restart server": "sudo service nginx restart"
+}
