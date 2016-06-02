@@ -1,3 +1,5 @@
 [user]
-	name = Hunter Leaman
-	email = stockmarketapp.ionic@gmail.com
+	name = Hunter
+	email = hunterleaman@gmail.com
+[push]
+	default = simple
