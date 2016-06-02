@@ -2,4 +2,4 @@
 	name = Hunter
 	email = hunterleaman@gmail.com
 [push]
-	default = simple
+	default = matching
