@@ -1,0 +1,48 @@
+$gutter: 2rem;
+
+$i5w: 320px;
+$i6w: 375px;
+$i6pw: 414px;
+$ags5w: 360px;
+$tablet-small-w: 600px;
+$tablet-large-w: 768px;
+$desktop-w: 1024px;
+
+$i5h: 460px;
+$i6h: 559px;
+$i6ph: 628px;
+$tablet-small-h: 800px;
+$tablet-large-h: 1024px;
+
+@mixin respond-to($media, $id1, $id2, $orientation) {
+  @if $media == up-to {
+    @media only screen and
+      (max-#{$orientation}: #{$id1 - 1}) { @content; }
+  }
+  @else if $media == up-to-and {
+    @media only screen and
+      (max-#{$orientation}: #{$id1}) { @content; }
+  }
+  @else if $media == from {
+    @media only screen and
+      (min-#{$orientation}: #{$id1}) { @content; }
+  }
+  @else if $media == from-to {
+    @media only screen and
+      (min-#{$orientation}: #{$id1}) and
+      (max-#{$orientation}: #{$id2 - 1}) { @content; }
+  }
+  @else if $media == from-w-and-h {
+    @media only screen and
+      (min-width: #{$id1}) and
+      (min-height: #{$id2}) { @content; }
+  }
+}
+
+// .profile-pic {
+//   float: left;
+//   width: 250;
+//   @include respond-to(handhelds) { width: 100% ;}
+//   @include respond-to(medium-screens) { width: 125; }
+//   @include respond-to(wide-screens) { float: none; }
+// }

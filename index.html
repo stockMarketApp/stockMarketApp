@@ -1,17 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>stockMarketApp</title>
-    <meta name="description" content="stockMarketApp">
-    <link id="favicon" rel="icon" href="favicon.ico" type="image/x-icon">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
 
-  <body>
-    <h1>Hello World!</h1>
-    <p>Test</p>
-  </body>
+<head>
+  <meta charset="utf-8">
+
+  <title>Learn the Ionic framework, AngularJS, and more with stockMarketApp</title>
+  <meta name="description" content="Learn from step-by-step lectures and implementations of HTML5, CSS3, and JavaScript using highly-marketable frameworks to build a stock market app.">
+  <meta name="author" content="Hunter Leaman">
+
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" sizes="57x57" href="./favicons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="./favicons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="./favicons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="./favicons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="./favicons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="./favicons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="./favicons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="./favicons/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="./favicons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="./favicons/favicon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="./favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="./favicons/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="./favicons/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="./favicons/manifest.json">
+  <link rel="mask-icon" href="./favicons/safari-pinned-tab.svg" color="#4e8ef7">
+  <meta name="apple-mobile-web-app-title" content="stockMarketApp">
+  <meta name="application-name" content="stockMarketApp">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="./favicons/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <meta property="og:title" content="Learn the Ionic framework, AngularJS, and more with stockMarketApp">
+  <meta property="og:site_name" content="stockMarketApp">
+  <meta property="og:url" content="http://stockmarketapp.github.io">
+  <meta property="og:description" content="Learn from step-by-step lectures and implementations of HTML5, CSS3, and JavaScript using highly-marketable frameworks to build a stock market app.">
+  <meta property="og:type" content="product">
+
+  <meta name="twitter:card" content="app">
+  <meta name="twitter:site" content="@stockmarketapp">
+
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+  <div itemscope itemtype="http://schema.org/Product" style="display: none;">
+    <a itemprop="url" href="https://www.udemy.com/learn-ionic-framework-build-a-stock-market-mobile-app/">
+      <h2 itemprop="name">Rapid Prototyping with Ionic: Build a Data-Driven Mobile App</h2>
+    </a>
+    <div itemprop="description">Learn from step-by-step lectures and implementations of HTML5, CSS3, and JavaScript using highly-marketable frameworks to build a stock market app.</div>
+    <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+      <div>Product rating:
+        <span itemprop="ratingValue">4.5</span> out of
+        <span itemprop="bestRating">5</span> with
+        <span itemprop="ratingCount">74</span> ratings
+      </div>
+    </div>
+  </div>
+
+  <!-- #hero section -->
+  <section id="hero" class="section-hero">
+
+    <div class="intro">
+      <p>Built from the ground up, from scratch</p>
+      <p>for your learning pleasure.</p>
+    </div>
+
+    <div class="center">
+      <img class="logo" src="./images/sma.svg" alt="stockMarketApp">
+      <h1>stockMarketApp</h1>
+      <h2>Learn the Ionic framework, AngularJS, Firebase, and more.</h2>
+    </div>
+
+    <div class="buttons">
+      <a href="https://www.udemy.com/learn-ionic-framework-build-a-stock-market-mobile-app/?couponCode=unlimited-10" class="udemy-button">Start building apps today</a>
+      <a href="https://github.com/hunterleaman/stockMarketApp" class="github-button">View the source code</a>
+    </div>
+
+
+  </section><!-- end #hero -->
+
+  <!-- #tech section -->
+  <section id="tech" class="section-tech">
+
+    <div class="intro">
+      <h2>Learn leading, in-demand frameworks</h2>
+      <p>Learn from step-by-step lectures and implementations of HTML5, CSS3, and JavaScript using the highly-marketable frameworks AngularJS and the Ionic framework in addition to Firebase, D3.js, and much more.</p>
+    </div>
+
+    <div class="tech-list">
+
+      <div class="item angular">
+        <img src="./images/angular.png" alt="AngularJS">
+        <h3>AngularJS</h3>
+        <p>AngularJS is what HTML would have been, had it been designed for building web-apps.</p>
+      </div>
+
+      <div class="item ionic">
+        <img src="./images/ionic.png" alt="Ionic">
+        <h3>Ionic</h3>
+        <p>Ionic is a complete open-source SDK for hybrid mobile app development.</p>
+      </div>
+
+      <div class="item firebase">
+        <img src="./images/firebase.png" alt="Firebase">
+        <h3>Firebase</h3>
+        <p>Firebase provides a realtime JSON database for your app's data, tools for user authentication, and much more.</p>
+      </div>
+
+      <div class="item d3">
+        <img src="./images/d3.png" alt="D3.js">
+        <h3>D3.js</h3>
+        <p>D3 helps you bring data to life, and with its emphasis on web standards, you get the full capabilities of modern browsers.</p>
+      </div>
+
+    </div>
+
+  </section><!-- end #tech -->
+
+  <!-- #features section -->
+  <section id="features" class="section-features">
+
+    <div class="feature text-right">
+
+      <div class="screenshots">
+        <img src="./images/menu.png" alt="stockMarketApp menu">
+        <img src="./images/login.png" alt="stockMarketApp login">
+      </div>
+
+      <div class="description">
+        <h3>Implement user authentication using Firebase</h3>
+        <p>Learn how to leverage Firebase's easy to use API to authenticate users with email and password using only client-side code. Extend this basic knowledge in the future to integrate third-party providers such as Facebook, Twitter, GitHub, and Google.</p>
+      </div>
+
+    </div>
+
+    <div class="feature text-left">
+
+      <div class="screenshots">
+        <img src="./images/chart-focus.png" alt="stockMarketApp focused chart with D3.js">
+        <img src="./images/chart.png" alt="stockMarketApp charts with D3.js">
+      </div>
+
+      <div class="description">
+        <h3>Create dynamic, interactive charts using D3.js</h3>
+        <p>D3 helps you bring data to life using HTML, SVG, and CSS. D3’s emphasis on web standards gives you the full capabilities of modern browsers without tying yourself to a proprietary framework.</p>
+      </div>
+
+    </div>
+
+    <div class="feature text-right">
+
+      <div class="screenshots">
+        <img src="./images/stock-detail.png" alt="stockMarketApp stock market API">
+        <img src="./images/stocks.png" alt="stockMarketApp stock watchlist">
+      </div>
+
+      <div class="description">
+        <h3>Integrate several different APIs to retrieve data</h3>
+        <p>Leverage several public APIs, including Yahoo's financial webservices and YQL, to retrieve, manipulate, and display data. Multiple methods are demonstrated, providing a foundation for future reuse and improvement.</p>
+      </div>
+
+    </div>
+
+  </section><!-- end #features -->
+
+  <!-- #stats section -->
+  <section id="stats" class="section-stats col-2">
+
+    <div class="mockup-wrapper">
+      <img src="./images/mockup.png" alt="stockMarketApp stocks">
+    </div>
+
+    <div class="stats-list">
+      <img src="./images/code.svg" alt="full source code">
+      <p class="code">Full source code</p>
+      <img src="./images/video.svg" alt="video lectures">
+      <p class="video">5+ hours of video</p>
+      <img src="./images/diploma.svg" alt="students enrollments">
+      <p class="enrollments">1,300+ enrollments</p>
+      <div class="stars" stars="4.5"><img src="./images/star.svg" alt="star"><img src="./images/star.svg" alt="star"><img src="./images/star.svg" alt="star"><img src="./images/star.svg" alt="star"><img src="./images/star.svg" alt="star"><img src="./images/star-half.svg" class="half" alt="star"></div>
+      <p class="reviews">70+ reviews</p>
+    </div>
+
+  </section><!-- end #stats -->
+
+  <!-- #cta section -->
+  <section id="cta" class="section-cta">
+
+    <div class="container">
+      <h2>Start building mobile apps today</h2>
+      <a href="#">Learn</a>
+    </div>
+
+  </section><!-- end #cta -->
+
+  <!-- #reviews section -->
+  <section id="reviews" class="section-reviews">
+
+    <div id="review" class="review" name="Qilin Gu">
+      <div class="stars" stars="5"><img src="./images/star.svg" alt="star"><img src="./images/star.svg" alt="star"><img src="./images/star.svg" alt="star"><img src="./images/star.svg" alt="star"><img src="./images/star.svg" alt="star"><img src="./images/star-half.svg" class="half" alt="star"></div>
+      <p class="explanation">Code is clean and working perfectly. Explanation is concise and clear. Highly recommend!</p>
+    </div>
+
+  </section><!-- end #reviews -->
+
+  <script language="javascript" type="text/javascript" src="main.js"></script>
+  <!-- <script language="javascript" type="text/javascript" src="fontfaceobserver.js"></script> -->
+
+</body>
 
 </html>
