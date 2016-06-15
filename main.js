@@ -1,3 +1,13 @@
+function setHeroHeight() {
+  var height = document.documentElement.clientHeight,
+    heroSectionElement = document.querySelector('.section-hero');
+
+  if(height <= 628) {
+    heroSectionElement.style.height = height + 'px';
+  }
+
+}
+
 function initReviews() {
   console.log("initReview()");
 
@@ -62,6 +72,7 @@ function initReviews() {
 
 function init() {
   console.log("init()");
+  setHeroHeight();
   initReviews();
 }
 
